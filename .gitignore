@@ -1,0 +1,29 @@
+# Runtime secrets
+.env
+*.env
+!.env.example
+
+# Service data and configuration
+config/
+data/
+logs/
+*.log
+
+# Review artifacts (local only)
+TODO.md
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.iml

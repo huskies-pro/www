@@ -1,0 +1,17 @@
+name: Deploy to Portainer
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  deploy:
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Trigger Portainer Webhook
+        env:
+          PORTAINER_WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK_URL }}
+        run: |
+          curl -k -X POST "$PORTAINER_WEBHOOK_URL"
