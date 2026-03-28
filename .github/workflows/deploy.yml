@@ -3,15 +3,10 @@ name: Deploy to Portainer
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on: [self-hosted]
-
-    steps:
-      - name: Trigger Portainer Webhook
-        env:
-          PORTAINER_WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK_URL }}
-        run: |
-          curl -k -X POST "$PORTAINER_WEBHOOK_URL"
+    uses: huskies-pro/.github/.github/workflows/reusable-portainer-deploy.yml@main
+    secrets:
+      webhook_url: ${{ secrets.PORTAINER_WEBHOOK_URL }}
